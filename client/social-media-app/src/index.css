@@ -1,0 +1,20 @@
+/* Webfont: Thunder-BoldLC */@font-face {
+    font-family: "Thunder";
+    src: url('/src/assets/fonts/thunderBold.woff2') format('woff2'), /* Modern Browsers */
+         url('/src/assets/fonts/thunderBold.otf') format('opentype'); /* Safari, Android, iOS */
+             
+    font-style: normal;
+    font-weight: 700;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Satoshi-Medium';
+    src: url('/src/assets/fonts/Satoshi-Medium.woff2') format('woff2'),
+         url('/src/assets/fonts/Satoshi-Medium.woff') format('woff');
+
+         font-weight: 500;
+         font-display: swap;
+         font-style: normal;
+  }
+

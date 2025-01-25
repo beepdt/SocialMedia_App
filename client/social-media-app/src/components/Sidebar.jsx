@@ -33,7 +33,7 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
       sx={{
         value:{selectedTab},
         width: 320,
-        height: 480,
+        height: 420,
         backgroundColor: "background.paper",
         borderRadius: "16px",
         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
@@ -45,46 +45,40 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
     >
       <List>
 
+      <Box sx={{ marginTop: "auto", padding: "16px", marginLeft:2 }}>
+        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+      </Box>
+      
 
-      <ListItemText 
-        primary = "Socio.io" 
-        primaryTypographyProps={{ fontWeight: 'bold', paddingLeft: '20px',paddingTop:"10px" }} 
-       />
-
-       <Box sx={{ padding: "16px" }}>
-
-       </Box>
+      
 
       <ListItemButton>
-        <ListItemIcon><HomeIcon /></ListItemIcon>
-        <ListItemText primary = "Home"/>
+        <ListItemIcon sx={{marginLeft:2}}><HomeIcon /></ListItemIcon>
+        <ListItemText primary = "Home" sx = {{marginLeft:2}}/>
       </ListItemButton>
         
         <ListItemButton>
-          <ListItemIcon><PersonIcon /></ListItemIcon>
-          <ListItemText primary="Profile" />
+          <ListItemIcon sx={{marginLeft:2}}><PersonIcon /></ListItemIcon>
+          <ListItemText primary="Profile" sx = {{marginLeft:2}}/>
         </ListItemButton>
 
         <ListItemButton>
-          <ListItemIcon><GroupIcon /></ListItemIcon>
-          <ListItemText primary="Friends" />
+          <ListItemIcon sx={{marginLeft:2}}><GroupIcon /></ListItemIcon>
+          <ListItemText primary="Friends" sx = {{marginLeft:2}}/>
         </ListItemButton>
 
         <ListItemButton>
-          <ListItemIcon><SettingsIcon /></ListItemIcon>
-          <ListItemText primary="Settings" />
+          <ListItemIcon sx={{marginLeft:2}}><SettingsIcon /></ListItemIcon>
+          <ListItemText sx = {{marginLeft:2}} primary="Settings" />
         </ListItemButton>
 
         <ListItemButton>
-          <ListItemIcon><ExitToAppIcon /></ListItemIcon>
-          <ListItemText primary="Logout" />
+          <ListItemIcon sx={{marginLeft:2}}><ExitToAppIcon /></ListItemIcon>
+          <ListItemText sx = {{marginLeft:2}} primary="Logout"/>
         </ListItemButton>
 
       </List>
 
-      <Box sx={{ marginTop: "auto", padding: "16px" }}>
-        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
-      </Box>
 
     </Box>
   );
@@ -123,7 +117,7 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
         position: "fixed",
         top: "40px",
-        left: "8px", 
+        left: "48px", 
         bottom: "8px",
       }}
     >
@@ -160,6 +154,9 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
 
       </List>
 
+      <Box sx={{ marginTop: 3 }}>
+        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+      </Box>
       
 
     </Box>
@@ -189,6 +186,10 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
       
 
       <Box sx={{ display: { xs: "block", sm: "none" ,md: "none"} }}>
+      <Box sx={{ marginTop: 2,marginLeft:2}}>
+        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+      </Box>
+
         {bottomNavContent}
       </Box>
 
