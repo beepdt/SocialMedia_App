@@ -1,8 +1,13 @@
+import { Box } from "@mui/material";
+import NavBar from "../NavBar/NavBar";
+
+
 const LoginPage = () =>{
     return(
-        <>
-            <h1 style = {{fontFamily: 'Satoshi-Medium'}}>Hello World</h1>
-        </>
+        <Box >
+       
+            <NavBar/>
+        </Box>
     )
 }
 
