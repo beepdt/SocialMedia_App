@@ -1,48 +1,48 @@
 import React, { useState } from "react";
+import { BrowserRouter,Navigate,Routes,Route } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
+import ProfilePage from "./pages/Profile/Profile";
+import Friends from "./pages/Friends/Friends";
+import LoginPage from "./pages/LoginPage/LoginPage";
+
+
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Sidebar from "./components/Sidebar";
 import ContentBody from "./components/ContentBody";
-import {Box, Typography} from "@mui/material"
-import "./index.css"
+import {Box, Typography} from "@mui/material";
+import "./index.css";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { themeSettings } from "./state/theme";
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
 
-  const theme = createTheme({
-    typography:{
-      fontFamily: 'Satoshi-Medium'
-    },
-    palette: {
-      mode: darkMode ? "dark" : "light",
-      primary: {
-        main: darkMode ? "#ff9800" : "#3f51b5",  // Dark: Orange, Light: Blue
-      },
-      text: {
-        primary: darkMode ? "#ffffff" : "#000000",  // Text color for each mode
-      },
-      background: {
-        default: darkMode ? "#101010" : "#FAFAFA",  // Dark/Light mode backgrounds
-        paper: darkMode ? "#1e1e1e" : "#ffffff",
-      },
-    },
-  });
+  const mode = useSelector((state)=> state.mode);
+  const theme = useMemo(()=> createTheme(themeSettings(mode)),[mode]);
+  
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
 
-     
-    <ContentBody darkMode={darkMode} setDarkMode={setDarkMode}/>
 
-    <Sidebar darkMode={darkMode} setDarkMode={setDarkMode} />
-      
-      
+<BrowserRouter>
 
-      
-     
+    <ThemeProvider theme = {theme}>
+      <CssBaseline/>
+
+          <Routes>
+
+            <Route path ="/" element={<LoginPage/>} />
+            <Route path ="/home" element={<HomePage/>} />
+            <Route path ="/profile/:userId" element={<ProfilePage/>} />
+
+          </Routes>
 
     </ThemeProvider>
+  
+</BrowserRouter>
+
+   
   );
 };
 
