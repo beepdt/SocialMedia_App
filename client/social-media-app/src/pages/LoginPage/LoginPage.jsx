@@ -1,21 +1,19 @@
 import { Box } from "@mui/material";
 import NavBar from "../NavBar/NavBar";
-import Typography from "@mui/material";
-import useTheme from "@mui/material";
-import useMediaQuery from "@mui/material";
+import { Typography, useTheme, useMediaQuery } from "@mui/material";
 import Form from "./Form";
 
 const LoginPage = () =>{
 
     const theme = useTheme();
-    const isNonMobileScreens = useMediaQuery("(minWidth: 1000px)");
+    const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
 
     return(
         <Box>
             <Box 
             width="100%" 
-            backgroundColor={theme.pallete.background.alt} 
+            backgroundColor={theme.palette.background.alt} 
             p="1rem 6%" 
             textAlign="center"
             >
@@ -32,13 +30,13 @@ const LoginPage = () =>{
                 width={isNonMobileScreens ? "50%" : "90%"}
                 p = "2rem"
                 m="2rem auto"
-                borderRadius="1.5rem"
-                backgroundColor={theme.pallete.background.alt}
+                borderRadius="8px"
+                backgroundColor={theme.palette.background.alt}
                 >
                 <Typography
                     fontWeight="500" 
                     variant="h5"
-                    sx={{mb:"1.5rem"}}
+                    sx={{mb:"1.5rem",fontFamily: "Satoshi-Medium"}}
                 >
                     Welcome to Socio.io
                 </Typography>
