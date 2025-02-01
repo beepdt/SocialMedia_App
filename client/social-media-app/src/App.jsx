@@ -1,49 +1,55 @@
-import React, { useState } from "react";
-import { BrowserRouter,Navigate,Routes,Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/Profile/Profile";
-import Friends from "./pages/Friends/Friends";
 import LoginPage from "./pages/LoginPage/LoginPage";
-
+import Loading from "./components/Loading";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Sidebar from "./components/Sidebar";
-import ContentBody from "./components/ContentBody";
-import {Box, Typography} from "@mui/material";
-import "./index.css";
-import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { themeSettings } from "./state/theme";
 
+const AppRoutes = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const location = useLocation();
+    const isAuth = Boolean(useSelector((state) => state.token));
+
+    useEffect(() => {
+          // Only trigger loading when logging in (navigating to /home while authenticated)
+          if (location.pathname === "/home" && isAuth) {
+            setIsLoading(true);
+            const timer = setTimeout(() => {
+              setIsLoading(false);
+            }, 1500); // 1.5s delay
+
+            return () => clearTimeout(timer);
+      }
+    }, 
+    
+    [location.pathname, isAuth]);
+
+    return (
+          <ThemeProvider theme={createTheme(themeSettings(useSelector((state) => state.mode)))}>
+            <CssBaseline />
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/home" element={isAuth ? <HomePage /> : <Navigate to="/" />} />
+                <Route path="/profile/:userId" element={isAuth ? <ProfilePage /> : <Navigate to="/" />} />
+              </Routes>
+            )}
+          </ThemeProvider>
+        );
+};
+
 const App = () => {
-
-  const mode = useSelector((state)=> state.mode);
-  const theme = useMemo(()=> createTheme(themeSettings(mode)),[mode]);
-  const isAuth = Boolean(useSelector((state)=>state.token));
-  
-
   return (
-
-
-<BrowserRouter>
-
-    <ThemeProvider theme = {theme}>
-      <CssBaseline/>
-
-          <Routes>
-
-            <Route path ="/" element={<LoginPage/>} />
-            <Route path ="/home" element={isAuth? <HomePage/> : <Navigate to="/" />} />
-            <Route path ="/profile/:userId" element={isAuth?<ProfilePage/>: <Navigate to="/" />} />
-
-          </Routes>
-
-    </ThemeProvider>
-  
-</BrowserRouter>
-
-   
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 };
 
