@@ -239,7 +239,7 @@ const Form = ()=>{
                                         },
                                     }}
                                 >
-                                        {isLogin? "Don't have an accouunt ? Sign up here."
+                                        {isLogin? "Don't have an account ? Sign up here."
                                                 : "Already have an account ? Login here."
                                         }
                                 </Typography>
