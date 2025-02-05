@@ -159,11 +159,19 @@ const NavBar = ()=>{
               gap="1.6rem"
               
           >
+
           <IconButton
               onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
             >
               <Close />
             </IconButton>
+
+            <FlexBetween backgroundColor = {neutralLight} borderRadius="8px" gap="0.5rem" padding="0.1rem 1.5rem">
+                <InputBase placeholder="Search..." sx={{fontFamily: "Satoshi-Medium"}}/>
+                    <IconButton>
+                        <Search/>
+                    </IconButton>
+          </FlexBetween>
 
             <IconButton
               onClick={() => dispatch(setMode())}

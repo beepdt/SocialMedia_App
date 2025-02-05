@@ -1,5 +1,6 @@
 import {
     ManageAccountsOutlined,
+    Home,
     EditOutlined,
     LocationOnOutlined,
     WorkOutlineOutlined,
@@ -10,7 +11,7 @@ import FlexBetween from "../../components/FlexBetween";
 import WidgetWrapper from "../../components/WidgetWrapper";
 import {useSelector} from "react-redux";
 import { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 
 const UserWidget = ({ userId, picturePath}) => {
     const [user, setUser] = useState(null);
@@ -20,6 +21,7 @@ const UserWidget = ({ userId, picturePath}) => {
     const dark = palette.neutral.dark;
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;
+    const background = palette.neutral.light;
 
     const getUser = async () => {
         const response = await fetch(`http://localhost:3001/users/${userId}`,
@@ -84,18 +86,37 @@ const UserWidget = ({ userId, picturePath}) => {
                     <Box p="1rem 0">
                         <Box 
                           sx={{
+                                p:"8px",
+                                borderRadius:"8px",
                                 "&:hover": {
                                   cursor: "pointer",
                                 },
+                                backgroundColor: location.pathname === "/home" ? background : "transparent"
                               }}
                               onClick={()=> navigate("/home")}
-                          display="flex" alignItems="center" gap="1rem" mb="0.5rem">
+                          display="flex" alignItems="space-between" gap="1rem" mb="0.5rem">
                             
-                            <Typography color={medium} fontFamily="Satoshi-Medium">Home</Typography>
+                            <Typography color={dark} fontFamily="Satoshi-Medium" variant="h4">
+                              Home
+                            </Typography>
                         </Box>
-                        <Box display="flex" alignItems="center" gap="1rem">
+
+                        <Box 
+                            sx={{
+                                p:"8px",
+                                borderRadius:"8px",
+                                "&:hover": {
+                                  cursor: "pointer",
+                                },
+                                backgroundColor: location.pathname === "/friends" ? background : "transparent"
+                              }}
+                              onClick={()=> navigate("/friends")}
+                        
+                            display="flex" alignItems="center" gap="1rem">
                             
-                            <Typography color={medium}  fontFamily="Satoshi-Medium">Friends</Typography>
+                            <Typography color={dark}  fontFamily="Satoshi-Medium" variant="h4">
+                              Friends
+                            </Typography>
                         </Box>
                     </Box>
 
@@ -103,15 +124,15 @@ const UserWidget = ({ userId, picturePath}) => {
                     <Box
                         p="1rem 0"
                     >
-                        <FlexBetween mb="0.5rem">
-                            <Typography color={medium} fontFamily="Satoshi-Medium">
+                        <FlexBetween mb="0.5rem" ml="8px">
+                            <Typography color={medium} fontFamily="Satoshi-Medium"variant="h5">
                             Who's viewed your profile</Typography>
-                            <Typography color={main} fontWeight="500" variant="h4">{viewedProfile}</Typography>
+                            <Typography color={main} fontWeight="500" variant="h5">{viewedProfile}</Typography>
                         </FlexBetween>
-                        <FlexBetween>
-                            <Typography color={medium} fontFamily="Satoshi-Medium">
+                        <FlexBetween ml="8px">
+                            <Typography color={medium} fontFamily="Satoshi-Medium"variant="h5">
                             Impressions</Typography>
-                            <Typography color={main} fontWeight="500" variant="h4">{impressions}</Typography>
+                            <Typography color={main} fontWeight="500" variant="h5">{impressions}</Typography>
                         </FlexBetween>
                     </Box>
 

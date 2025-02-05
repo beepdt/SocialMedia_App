@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/Profile/Profile";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Loading from "./components/Loading";
+import Friends from  "./pages/Friends/Friends"
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -17,11 +18,11 @@ const AppRoutes = () => {
 
     useEffect(() => {
           // Only trigger loading when logging in (navigating to /home while authenticated)
-          if (location.pathname === "/home" && isAuth) {
+          if ( isAuth) {
             setIsLoading(true);
             const timer = setTimeout(() => {
               setIsLoading(false);
-            }, 1500); // 1.5s delay
+            }, 650); // 1.5s delay
 
             return () => clearTimeout(timer);
       }
@@ -39,6 +40,7 @@ const AppRoutes = () => {
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/home" element={isAuth ? <HomePage /> : <Navigate to="/" />} />
                 <Route path="/profile/:userId" element={isAuth ? <ProfilePage /> : <Navigate to="/" />} />
+                <Route path="/friends" element={<Friends />} />
               </Routes>
             )}
           </ThemeProvider>
