@@ -13,7 +13,7 @@ const UserImage = ({image, size = "60px"}) => {
                     height: size,
                 }}/>
         </Box>
-    )
-}
+    );
+};
 
 export default UserImage;

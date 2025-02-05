@@ -48,7 +48,7 @@ const NavBar = ()=>{
             transform:"translateX(-50%)",
             padding:"1rem 6%",
             backgroundColor:{alt},
-            borderRadius:"16px",
+            borderRadius:"8px",
             //boxShadow:"0px 4px 20px rgba(0,0,0,0.1)",
             width:"90%",
             maxWidth:"1200px",
