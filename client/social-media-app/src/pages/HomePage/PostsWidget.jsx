@@ -28,9 +28,21 @@ const PostsWidget = ({userId, isProfile = false}) => {
 
     useEffect(()=> {
         if(isProfile){
-            
+            getUserPosts();
+        } else {
+            getPosts();
         }
-    })
+    } ,[]); //eslint-disable-line react-hooks/exhaustive-deps
+
+    return(
+        <>
+           {posts.map(
+            ({
+            
+            })
+           )} 
+        </>
+    )
 };
 
 export default PostsWidget;
