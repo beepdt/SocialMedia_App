@@ -64,7 +64,7 @@ const PostWidget = ({
                     height="auto"
                     alt= "post"
                     style={{borderRadius:"8px",marginTop: "0.75rem"}}
-                    src={`http://localhost"3001/assets/${picturePath}`}
+                    src={`http://localhost:3001/assets/${picturePath}`}
                 />
             )}
             <FlexBetween mt="0.25rem">
@@ -105,7 +105,7 @@ const PostWidget = ({
                     {comments.map((comment, i) => (
                         <Box key={`${postId}-${i}`}>
                             <Divider/>
-                            <Typography sx={{color: main, m:"0.5rem 0", pl:"1rem"}}>
+                            <Typography sx={{color: main, m:"0.5rem 0", pl:"1rem", fontFamily: "Satoshi-Medium"}}>
                                 {comment}
                             </Typography>
                         </Box>

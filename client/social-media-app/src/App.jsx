@@ -5,6 +5,7 @@ import ProfilePage from "./pages/Profile/Profile";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Loading from "./components/Loading";
 import Friends from  "./pages/Friends/Friends"
+import { useMemo } from "react";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";

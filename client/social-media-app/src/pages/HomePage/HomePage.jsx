@@ -4,11 +4,12 @@ import { useSelector } from "react-redux";
 import UserWidget from "./UserWidget";
 import MyPostWidget from "./MyPostWidget";
 import PostsWidget from "./PostsWidget";
+import FriendsWidget from "../Friends/FriendsWidget";
 
 
 const HomePage = () =>{
     const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-    const {_id,picturePath} = useSelector((state)=>state.user);
+    const {_id, picturePath} = useSelector((state)=>state.user);
     return(
         <Box>
             <NavBar/>
@@ -23,19 +24,21 @@ const HomePage = () =>{
                 <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
                      <UserWidget userId={_id} picturePath={picturePath} />
                 </Box>
-                        <Box
-                            flexBasis={isNonMobileScreens ? "42%" : undefined}
-                            mt={isNonMobileScreens ? undefined : "2rem"}
-                        >
-                            <MyPostWidget picturePath={picturePath}/>
-                            <PostsWidget userId={_id}/>
-                        </Box>
+                <Box
+                    flexBasis={isNonMobileScreens ? "42%" : undefined}
+                    mt={isNonMobileScreens ? undefined : "2rem"}
+                >
+                        <MyPostWidget picturePath={picturePath}/>
+                        <PostsWidget userId={_id} />
+                </Box>
 
-                        {isNonMobileScreens  && (
-                            <Box
-                                flexBasis="26%"
-                            ></Box>
-                        )}
+                {isNonMobileScreens  && (
+                        <Box
+                            flexBasis="26%"
+                        >
+                            <FriendsWidget userId={_id}/>
+                        </Box>
+                )}
 
                         
                     </Box>
