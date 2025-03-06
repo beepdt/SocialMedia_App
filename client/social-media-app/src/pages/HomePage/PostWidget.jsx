@@ -49,7 +49,7 @@ const PostWidget = ({
             dispatch(setPost({ post: updatedPost }));
         };
         return (
-            <WidgetWrapper m="2rem 00">
+            <WidgetWrapper mb="2rem ">
                 <Friend
                     friendId={postUserId}
                     name={name}
